@@ -45,7 +45,9 @@ async def play(ctx, *, query):
 
     if voice.is_playing():
         voice.stop()
-    voice.play(FFmpegPCMAudio(source, **FFMPEG_OPTS, executable="../ffmpeg/bin/ffmpeg.exe"), after=lambda e: print('done', e))
+    FFMPEG_EXE = os.path.abspath(os.path.join(os.getcwd(), os.pardir)) + "\\ffmpeg\\bin\\ffmpeg.exe"
+    FFMPEG_EXE = FFMPEG_EXE.replace('\\', '/')
+    voice.play(FFmpegPCMAudio(source, **FFMPEG_OPTS, executable= FFMPEG_EXE), after=lambda e: print('done', e))
 
 @bot.command(pass_context=True)
 async def stop(ctx):
@@ -59,7 +61,7 @@ async def disconnect(ctx):
 
 @bot.event
 async def on_ready():
-    print('Bot initialized')
+    print('[+] Bot initialized!')
     await bot.change_presence(activity=discord.Game('!help'))
 
 # -- MAIN --
