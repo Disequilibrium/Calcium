@@ -26,11 +26,9 @@ async def join(ctx, voice):
 
 @bot.command(pass_context=True)
 async def help(ctx):
-    await ctx.send("```\n
-                    !play <youtube-link> OR <youtube-search-term>\n
-                    !stop\n
-                    !disconnect\n
-                    ```")
+    await ctx.send("!play <youtube-link> OR <youtube-search-term>" + "\n"
+                     + "!stop" + "\n"
+                     + "!disconnect")
 
 @bot.command(pass_context=True)
 async def play(ctx, *, query):
