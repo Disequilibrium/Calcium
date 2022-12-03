@@ -26,9 +26,11 @@ async def join(ctx, voice):
 
 @bot.command(pass_context=True)
 async def help(ctx):
-    await ctx.send("!play <youtube-link> OR <youtube-search-term>" + "\n"
+    await ctx.send("```" + "\n"
+                     + "!play <youtube-link> OR <youtube-search-term>" + "\n"
                      + "!stop" + "\n"
-                     + "!disconnect")
+                     + "!disconnect" + "\n"
+                     "```")
 
 @bot.command(pass_context=True)
 async def play(ctx, *, query):
@@ -58,12 +60,15 @@ async def disconnect(ctx):
 @bot.event
 async def on_ready():
     print('Bot initialized')
-    await bot.change_presence(activity=discord.Game('!play !stop !disconnect'))
+    await bot.change_presence(activity=discord.Game('!help'))
 
 # -- MAIN --
 
 if os.path.exists("src/token.txt"):
     f = open("src/token.txt", "r")
+    TOKEN = f.readline()
+elif os.path.exists("token.txt"):
+    f = open("token.txt", "r")
     TOKEN = f.readline()
 else:
     f = open("src/token.txt", "w")
