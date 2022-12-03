@@ -45,7 +45,7 @@ async def play(ctx, *, query):
 
     if voice.is_playing():
         voice.stop()
-    voice.play(FFmpegPCMAudio(source, **FFMPEG_OPTS, executable="D:/ffmpeg/bin/ffmpeg.exe"), after=lambda e: print('done', e))
+    voice.play(FFmpegPCMAudio(source, **FFMPEG_OPTS, executable="../ffmpeg/bin/ffmpeg.exe"), after=lambda e: print('done', e))
 
 @bot.command(pass_context=True)
 async def stop(ctx):
