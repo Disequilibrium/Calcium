@@ -57,11 +57,11 @@ async def on_ready():
 
 # -- MAIN --
 
-if os.path.exists("token.txt"):
+if os.path.exists("src/token.txt"):
     f = open("token.txt", "r")
     TOKEN = f.readline()
 else:
-    f = open("token.txt", "w")
+    f = open("src/token.txt", "w")
     TOKEN = input("Please input Bot API Token: ")
     TOKEN = TOKEN.strip()
     f.write(TOKEN)
