@@ -1,3 +1,4 @@
+import os
 import discord
 from discord import FFmpegPCMAudio
 from discord.ext import commands, tasks
@@ -26,7 +27,6 @@ async def join(ctx, voice):
 
 @bot.command(pass_context=True)
 async def play(ctx, *, query):
-    print('yolo')
     FFMPEG_OPTS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
 
     video, source = search(query)
@@ -57,8 +57,15 @@ async def on_ready():
 
 # -- MAIN --
 
-f = open("token.txt", "r")
-TOKEN = f.readline()
+if os.path.exists("token.txt"):
+    f = open("token.txt", "r")
+    TOKEN = f.readline()
+else:
+    f = open("token.txt", "w")
+    TOKEN = input("Please input Bot API Token: ")
+    TOKEN = TOKEN.strip()
+    f.write(TOKEN)
+    f.close()
 
 try:
     bot.run(TOKEN)
