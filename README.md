@@ -1,5 +1,5 @@
 # Calcium
-Discord Music Bot
+## Discord Music Bot
 
 As of recent, many Discord Bot developers, whom had publicly listed music bots, were forced to remove their bots' capability of fetching YouTube audio and playing it on server Voice Channels, due to copyright related reasons.
 
