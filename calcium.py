@@ -57,7 +57,7 @@ async def on_ready():
 
 # -- MAIN --
 
-f = open.file("token.txt", "r")
+f = open("token.txt", "r")
 TOKEN = f.readline()
 
 try:
