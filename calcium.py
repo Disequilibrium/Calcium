@@ -58,7 +58,7 @@ async def on_ready():
 # -- MAIN --
 
 if os.path.exists("src/token.txt"):
-    f = open("token.txt", "r")
+    f = open("src/token.txt", "r")
     TOKEN = f.readline()
 else:
     f = open("src/token.txt", "w")
