@@ -45,7 +45,7 @@ async def play(ctx, *, query):
 
     if voice.is_playing():
         voice.stop()
-    FFMPEG_EXE = os.path.abspath(os.path.join(os.getcwd(), os.pardir)) + "\\ffmpeg\\bin\\ffmpeg.exe"
+    FFMPEG_EXE = os.getcwd() + "\\ffmpeg\\bin\\ffmpeg.exe"
     FFMPEG_EXE = FFMPEG_EXE.replace('\\', '/')
     voice.play(FFmpegPCMAudio(source, **FFMPEG_OPTS, executable= FFMPEG_EXE), after=lambda e: print('done', e))
 
