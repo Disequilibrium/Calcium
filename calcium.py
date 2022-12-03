@@ -9,8 +9,6 @@ intents = discord.Intents.all()
 bot = commands.Bot(command_prefix='!', intents=intents)
 bot.remove_command('help')
 
-TOKEN = ''
-
 def search(query):
     with YoutubeDL({'format': 'bestaudio', 'noplaylist': 'True'}) as ydl:
         try: requests.get(query)
@@ -20,7 +18,6 @@ def search(query):
 
 async def join(ctx, voice):
     channel = ctx.author.voice.channel
-
     if voice and voice.is_connected():
         await voice.move_to(channel)
     else:
@@ -58,4 +55,14 @@ async def on_ready():
     print('Bot initialized')
     await bot.change_presence(activity=discord.Game('!play !stop !disconnect'))
 
-bot.run()
+# -- MAIN --
+
+f = open.file("token.txt", "r")
+TOKEN = f.readline()
+
+try:
+    bot.run(TOKEN)
+except:
+    print("[!] Authentication failed!")
+    print("[!] Please check the correctness of your API Token in token.txt.")
+    print("[!] Terminating program . . .")
